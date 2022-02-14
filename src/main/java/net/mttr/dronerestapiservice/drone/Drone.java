@@ -1,13 +1,18 @@
 package net.mttr.dronerestapiservice.drone;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Drone {
+    @Id
     private String serialNumber;
     private Integer weightLimit;
     private Integer batteryCapacity;
     private String model;
     private String state;
-
-
 
     public Drone() {
     }
