@@ -30,6 +30,12 @@ public class DroneController {
         return droneService.getDroneMedicine(serialNumber);
     }
 
+    @GetMapping(path = "available")
+    public List<Drone> getAvailableDrones()
+    {
+        return droneService.getAvailableDrones();
+    }
+
     @PostMapping
     public void registerNewDrone(@RequestBody Drone drone){
         droneService.addNewDrone(drone);

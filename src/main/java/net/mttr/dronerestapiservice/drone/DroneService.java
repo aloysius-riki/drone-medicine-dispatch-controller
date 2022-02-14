@@ -28,6 +28,12 @@ public class DroneService {
 
         }
 
+    @Transactional
+    public List<Drone> getAvailableDrones() {
+        return droneRepository.findByBatteryCapacityGreaterThan(25);
+
+    }
+
     public void addNewDrone(Drone drone) {
         Optional<Drone> droneOptional = droneRepository
                 .findDroneBySerialNumber(drone.getSerialNumber());
