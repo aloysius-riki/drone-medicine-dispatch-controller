@@ -46,12 +46,10 @@ public class DroneController {
         droneService.deleteDrone(serialNumber);
     }
 
-    @PutMapping(path = "{serialNumber}")
-    public void updateDrone(
-            @PathVariable("serialNumber") String serialNumber,
-            @RequestParam(required = false) String state,
-            @RequestParam(required = false) String medication)
-            {
-        droneService.updateDrone(serialNumber, state, medication);
+
+    @PutMapping(path = "load")
+    public void loadDrone(@RequestBody Drone drone)
+    {
+        droneService.loadDrone(drone);
     }
 }

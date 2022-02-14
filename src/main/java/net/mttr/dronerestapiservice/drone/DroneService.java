@@ -52,18 +52,14 @@ public class DroneService {
         }
         droneRepository.deleteById(serialNumber);
     }
-    @Transactional
-    public void updateDrone(String serialNumber,
-                            String state,
-                            String medication) {
-        Drone drone =  droneRepository.findById(serialNumber)
-                .orElseThrow(() -> new IllegalStateException(
-                        "drone with serial number " + serialNumber + " does not exist"));
 
-        if (!Objects.equals(drone.getMedication(), "Medication")) {
-            drone.setMedication(medication);
+    public void loadDrone(Drone drone) {
+        Optional<Drone> droneOptional = droneRepository
+                .findDroneBySerialNumber(drone.getSerialNumber());
+
+        if(!droneOptional.isPresent()){
+            throw new IllegalStateException("Cannot find drone with that serial number");
         }
-
-
+        droneRepository.save(drone);
     }
 }
