@@ -13,6 +13,7 @@ public class Drone {
     private Integer batteryCapacity;
     private String model;
     private String state;
+    private String medication;
 
     public Drone() {
     }
@@ -21,12 +22,14 @@ public class Drone {
                  Integer weightLimit,
                  Integer batteryCapacity,
                  String model,
-                 String state) {
+                 String state,
+                 String medication) {
         this.serialNumber = serialNumber;
         this.weightLimit = weightLimit;
         this.batteryCapacity = batteryCapacity;
         this.model = model;
         this.state = state;
+        this.medication = medication;
     }
 
 
@@ -70,6 +73,14 @@ public class Drone {
         this.state = state;
     }
 
+    public String getMedication() {
+        return medication;
+    }
+
+    public void setMedication(String medication) {
+        this.medication = medication;
+    }
+
     @Override
     public String toString() {
         return "Drone{" +
@@ -78,6 +89,7 @@ public class Drone {
                 ", batteryCapacity=" + batteryCapacity +
                 ", model='" + model + '\'' +
                 ", state='" + state + '\'' +
+                ", medication='" + medication + '\'' +
                 '}';
     }
 }

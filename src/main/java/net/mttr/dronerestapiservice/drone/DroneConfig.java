@@ -17,14 +17,16 @@ public class DroneConfig {
                    100,
                    10,
                    "Model1",
-                   "State1"
+                   "State1",
+                   "Medication1"
            );
            Drone two = new Drone(
                    "SerialNumber2",
                    200,
                    20,
                    "Model2",
-                   "State2"
+                   "State2",
+                   "Medication2"
            );
 
            droneRepository.saveAll(

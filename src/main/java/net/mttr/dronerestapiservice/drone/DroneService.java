@@ -2,8 +2,10 @@ package net.mttr.dronerestapiservice.drone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -37,5 +39,19 @@ public class DroneService {
                     "drone with serial number" + serialNumber + "does not exist");
         }
         droneRepository.deleteById(serialNumber);
+    }
+    @Transactional
+    public void updateDrone(String serialNumber,
+                            String state,
+                            String medication) {
+        Drone drone =  droneRepository.findById(serialNumber)
+                .orElseThrow(() -> new IllegalStateException(
+                        "drone with serial number " + serialNumber + " does not exist"));
+
+        if (!Objects.equals(drone.getMedication(), "Medication")) {
+            drone.setMedication(medication);
+        }
+
+
     }
 }
