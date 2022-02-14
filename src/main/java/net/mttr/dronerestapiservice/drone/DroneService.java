@@ -15,7 +15,6 @@ public class DroneService {
         this.droneRepository = droneRepository;
     }
 
-
     public List<Drone> getDrones() {
         return droneRepository.findAll();
     }
