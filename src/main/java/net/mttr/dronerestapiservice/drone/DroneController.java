@@ -9,16 +9,15 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/drone")
 public class DroneController {
+
+    private final DroneService droneService;
+
+    public DroneController(DroneService droneService) {
+        this.droneService = droneService;
+    }
+
     @GetMapping
     public List<Drone> getDrones() {
-        return List.of(
-                new Drone(
-                        "SerialNumber",
-                        500,
-                        45,
-                        "Model",
-                        "State"
-                )
-        );
+        return droneService.getDrones();
     }
 }
