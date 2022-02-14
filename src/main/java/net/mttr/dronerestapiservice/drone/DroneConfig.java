@@ -20,6 +20,7 @@ public class DroneConfig {
                    "RETURNING",
                    "Medication1"
            );
+
            Drone two = new Drone(
                    "SerialNumber2",
                    150,
@@ -28,62 +29,70 @@ public class DroneConfig {
                    "RETURNING",
                    "Medication2"
            );
+
            Drone three = new Drone(
-                   "SerialNumber1",
+                   "SerialNumber3",
                    180,
                    20,
                    "Middleweight",
                    "RETURNING",
                    "Medication1"
            );
+
            Drone four = new Drone(
-                   "SerialNumber1",
+                   "SerialNumber4",
                    200,
                    40,
                    "Middleweight",
                    "DELIVERED",
                    "Medication1"
            );
+
            Drone five = new Drone(
-                   "SerialNumber1",
+                   "SerialNumber5",
                    250,
                    65,
                    "Cruiserweight",
                    "DELIVERING",
                    "Medication1"
            );
+
            Drone six = new Drone(
-                   "SerialNumber1",
+                   "SerialNumber6",
                    300,
                    80,
                    "Cruiserweight",
                    "DELIVERING",
                    "Medication1"
            );
+
            Drone seven = new Drone(
-                   "SerialNumber1",
+                   "SerialNumber7",
                    350,
                    85,
                    "Cruiserweight",
                    "LOADED",
                    "Medication1"
            );
+
            Drone eight = new Drone(
-                   "SerialNumber1",
+                   "SerialNumber8",
                    400,
                    90,
                    "Heavyweight",
                    "LOADING",
                    "Medication1"
            );
+
            Drone nine = new Drone(
-                   "SerialNumber1",
+                   "SerialNumber9",
                    450,
                    95,
                    "Heavyweight",
                    "IDLE",
                    "Medication9"
            );
+
            Drone ten = new Drone(
                    "SerialNumber10",
                    500,
@@ -94,8 +103,7 @@ public class DroneConfig {
            );
 
            droneRepository.saveAll(
-                   List.of(one, two, three, four, five, six, seven,
-                           eight, nine, ten)
+                   List.of(one, two, three, four, five, six, seven, eight, nine, ten)
            );
         } ;
     }
