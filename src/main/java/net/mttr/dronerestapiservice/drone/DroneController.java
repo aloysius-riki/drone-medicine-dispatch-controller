@@ -36,7 +36,7 @@ public class DroneController {
         return droneService.getAvailableDrones();
     }
 
-    @PostMapping
+    @PostMapping(path = "register")
     public void registerNewDrone(@RequestBody Drone drone){
         droneService.addNewDrone(drone);
     }

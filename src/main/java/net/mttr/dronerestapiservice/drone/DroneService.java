@@ -39,7 +39,7 @@ public class DroneService {
                 .findDroneBySerialNumber(drone.getSerialNumber());
 
         if(droneOptional.isPresent()){
-            throw new IllegalStateException("email taken");
+            throw new IllegalStateException("serial number taken");
         }
         droneRepository.save(drone);
     }
