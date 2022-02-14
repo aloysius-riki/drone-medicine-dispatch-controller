@@ -18,4 +18,8 @@ public class DroneService {
     public List<Drone> getDrones() {
         return droneRepository.findAll();
     }
+
+    public void addNewDrone(Drone drone) {
+        System.out.println(drone);
+    }
 }
