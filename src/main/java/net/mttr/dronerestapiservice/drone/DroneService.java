@@ -22,6 +22,12 @@ public class DroneService {
         return droneRepository.findAll();
     }
 
+    @Transactional
+    public Optional<Drone> getDroneMedicine(String serialNumber) {
+        return droneRepository.findById(serialNumber);
+
+        }
+
     public void addNewDrone(Drone drone) {
         Optional<Drone> droneOptional = droneRepository
                 .findDroneBySerialNumber(drone.getSerialNumber());
