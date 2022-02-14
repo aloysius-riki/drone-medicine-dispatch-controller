@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DroneService {
@@ -20,6 +21,12 @@ public class DroneService {
     }
 
     public void addNewDrone(Drone drone) {
-        System.out.println(drone);
+        Optional<Drone> droneOptional = droneRepository
+                .findDroneBySerialNumber(drone.getSerialNumber());
+
+        if(droneOptional.isPresent()){
+            throw new IllegalStateException("email taken");
+        }
+        droneRepository.save(drone);
     }
 }

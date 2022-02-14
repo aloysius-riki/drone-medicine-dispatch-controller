@@ -1,9 +1,15 @@
 package net.mttr.dronerestapiservice.drone;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public interface DroneRepository
         extends JpaRepository<Drone, String> {
+
+    @Query("SELECT d FROM Drone d WHERE d.serialNumber = ?1")
+    Optional<Drone> findDroneBySerialNumber(String serialNumber);
 }
