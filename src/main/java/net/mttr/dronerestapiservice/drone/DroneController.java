@@ -25,4 +25,9 @@ public class DroneController {
     public void registerNewDrone(@RequestBody Drone drone){
         droneService.addNewDrone(drone);
     }
+
+    @DeleteMapping(path = "{droneSerialNumber}")
+    public void deleteDrone(@PathVariable("droneSerialNumber") String serialNumber) {
+        droneService.deleteDrone(serialNumber);
+    }
 }

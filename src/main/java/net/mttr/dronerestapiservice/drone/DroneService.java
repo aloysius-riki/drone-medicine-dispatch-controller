@@ -29,4 +29,13 @@ public class DroneService {
         }
         droneRepository.save(drone);
     }
+
+    public void deleteDrone(String serialNumber) {
+        boolean exists = droneRepository.existsById(serialNumber);
+        if (!exists){
+            throw new IllegalStateException(
+                    "drone with serial number" + serialNumber + "does not exist");
+        }
+        droneRepository.deleteById(serialNumber);
+    }
 }
