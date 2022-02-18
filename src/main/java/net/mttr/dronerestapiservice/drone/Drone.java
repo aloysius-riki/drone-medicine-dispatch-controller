@@ -17,12 +17,12 @@ public class Drone {
     private String model;
     private String state;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "medication_name",
+    @JoinTable(name = "drone_medication",
             joinColumns = {
-                    @JoinColumn(name = "serialNumber", referencedColumnName = "serialNumber",
+                    @JoinColumn(name = "droneSerialNumber", referencedColumnName = "serialNumber",
                             nullable = false, updatable = false)},
             inverseJoinColumns = {
-                    @JoinColumn(name = "name", referencedColumnName = "name",
+                    @JoinColumn(name = "medicationName", referencedColumnName = "name",
                             nullable = false, updatable = false)})
     private Set<Medication> medication = new HashSet<>();
 
