@@ -19,7 +19,7 @@ public class MedicationConfig {
                     "1.png"
             );
 
-            Medication two = new Medication(
+            Medication medicationTwo = new Medication(
                     "Name2",
                     150,
                     "Medication2",
@@ -83,7 +83,7 @@ public class MedicationConfig {
             );
 
             medicationRepository.saveAll(
-                    List.of(one, two, three, four, five, six, seven, eight, nine, ten)
+                    List.of(one, medicationTwo, three, four, five, six, seven, eight, nine, ten)
             );
         } ;
     }

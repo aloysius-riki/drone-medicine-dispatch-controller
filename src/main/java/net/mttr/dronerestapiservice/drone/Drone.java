@@ -1,8 +1,11 @@
 package net.mttr.dronerestapiservice.drone;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import net.mttr.dronerestapiservice.medication.Medication;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
@@ -13,7 +16,16 @@ public class Drone {
     private Integer batteryCapacity;
     private String model;
     private String state;
-    private String medication;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "medication_name",
+            joinColumns = {
+                    @JoinColumn(name = "serialNumber", referencedColumnName = "serialNumber",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "name", referencedColumnName = "name",
+                            nullable = false, updatable = false)})
+    private Set<Medication> medication = new HashSet<>();
+
 
     public Drone() {
     }
@@ -22,14 +34,12 @@ public class Drone {
                  Integer weightLimit,
                  Integer batteryCapacity,
                  String model,
-                 String state,
-                 String medication) {
+                 String state) {
         this.serialNumber = serialNumber;
         this.weightLimit = weightLimit;
         this.batteryCapacity = batteryCapacity;
         this.model = model;
         this.state = state;
-        this.medication = medication;
     }
 
 
@@ -73,11 +83,11 @@ public class Drone {
         this.state = state;
     }
 
-    public String getMedication() {
+    public Set<Medication> getMedication() {
         return medication;
     }
 
-    public void setMedication(String medication) {
+    public void setMedication(Set<Medication> medication) {
         this.medication = medication;
     }
 

@@ -16,4 +16,7 @@ public interface DroneRepository
 
     @Query("SELECT c FROM Drone c WHERE c.batteryCapacity >= 25")
     List<Drone> findByBatteryCapacityGreaterThan(Integer low);
+
+//    List<Drone> findByNameContaining(String serialNumber);
+
 }

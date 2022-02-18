@@ -1,8 +1,10 @@
 package net.mttr.dronerestapiservice.medication;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import net.mttr.dronerestapiservice.drone.Drone;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
@@ -12,6 +14,8 @@ public class Medication {
     private Integer weight;
     private String code;
     private String image;
+    @ManyToMany(mappedBy = "medication", fetch = FetchType.LAZY)
+    private Set<Drone> drone = new HashSet<>();
 
     public Medication() {
     }

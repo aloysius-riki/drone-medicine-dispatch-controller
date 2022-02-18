@@ -1,42 +1,70 @@
 package net.mttr.dronerestapiservice.drone;
 
+import net.mttr.dronerestapiservice.medication.Medication;
+import net.mttr.dronerestapiservice.medication.MedicationRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @Configuration
 public class DroneConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(DroneRepository droneRepository){
+    CommandLineRunner commandLineRunner(DroneRepository droneRepository,
+                                        MedicationRepository medicationRepository
+                                        ){
        return args -> {
+           Medication medication1 = new Medication(
+                   "Name1",
+                   100,
+                   "Medication1",
+                   "1.png"
+           );
+           medicationRepository.save(medication1);
+
+           //create endpoint to do the sme but findmedication by name instead
+           //that way you can create drones null if they are not mid delivery
+
+           Medication medication2 = new Medication(
+                   "Name2",
+                   100,
+                   "Medication2",
+                   "2.png"
+           );
+           medicationRepository.save(medication2);
+
            Drone one = new Drone(
                    "SerialNumber1",
                    100,
                    10,
                    "Lightweight",
-                   "RETURNING",
-                   "Medication1"
+                   "RETURNING"
            );
+
+           one.setMedication(Set.of(medication1, medication2));
 
            Drone two = new Drone(
                    "SerialNumber2",
                    150,
                    15,
                    "Lightweight",
-                   "RETURNING",
-                   "Medication2"
+                   "RETURNING"
            );
+
+           two.setMedication(Set.of(medication1, medication2));
 
            Drone three = new Drone(
                    "SerialNumber3",
                    180,
                    20,
                    "Middleweight",
-                   "RETURNING",
-                   "Medication1"
+                   "RETURNING"
            );
 
            Drone four = new Drone(
@@ -44,8 +72,7 @@ public class DroneConfig {
                    200,
                    40,
                    "Middleweight",
-                   "DELIVERED",
-                   "Medication1"
+                   "DELIVERED"
            );
 
            Drone five = new Drone(
@@ -53,8 +80,7 @@ public class DroneConfig {
                    250,
                    65,
                    "Cruiserweight",
-                   "DELIVERING",
-                   "Medication1"
+                   "DELIVERING"
            );
 
            Drone six = new Drone(
@@ -62,8 +88,7 @@ public class DroneConfig {
                    300,
                    80,
                    "Cruiserweight",
-                   "DELIVERING",
-                   "Medication1"
+                   "DELIVERING"
            );
 
            Drone seven = new Drone(
@@ -71,8 +96,7 @@ public class DroneConfig {
                    350,
                    85,
                    "Cruiserweight",
-                   "LOADED",
-                   "Medication1"
+                   "LOADED"
            );
 
            Drone eight = new Drone(
@@ -80,8 +104,7 @@ public class DroneConfig {
                    400,
                    90,
                    "Heavyweight",
-                   "LOADING",
-                   "Medication1"
+                   "LOADING"
            );
 
            Drone nine = new Drone(
@@ -89,8 +112,7 @@ public class DroneConfig {
                    450,
                    95,
                    "Heavyweight",
-                   "IDLE",
-                   "Medication9"
+                   "IDLE"
            );
 
            Drone ten = new Drone(
@@ -98,8 +120,7 @@ public class DroneConfig {
                    500,
                    100,
                    "Heavyweight",
-                   "IDLE",
-                   "Medication10"
+                   "IDLE"
            );
 
            droneRepository.saveAll(
